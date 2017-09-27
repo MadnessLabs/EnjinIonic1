@@ -1,6 +1,6 @@
 {
   "name": "@enjin/ionic1",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A comprehensive build system for Ionic 1 apps by Madness Labs as part of the Madness Enjin",
   "main": "index.js",
   "scripts": {
