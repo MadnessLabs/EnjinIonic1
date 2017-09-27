@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const argv     = require('yargs').argv;
 
-const createComponent = require('../../../../services/component/create');
+const createComponent = require('../../services/addComponent');
 
 module.exports = function(gulp, callback) {
     if (argv.n) {

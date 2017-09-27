@@ -11,7 +11,7 @@ module.exports = function(gulp, callback) {
     } else {
         inquirer.prompt([{
             type: 'input',
-            message: 'What is the name of the component you would like to remove? (CamelCase)',
+            message: 'What is the name of the component you would like to remove? (name must include a - in it)',
             name: 'name'
         }], function(res) {
             removeComponent(res.name);
