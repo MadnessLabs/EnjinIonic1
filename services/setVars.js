@@ -75,7 +75,7 @@ module.exports = function(callback) {
     jsLib        = configJSON.js.libraries;
     jsWatch      = configJSON.js.watch;
     // TEMPLATES
-    tmplDir      =  global.enjin.path  + '/app/enjin/' + global.enjin.stack + '/templates/';
+    tmplDir      =  configJSON.tmplDir ? configJSON.tmplDir : process.cwd() + '/node_modules/@enjin/ionic1/templates/';
     workboxConfig = configJSON.workboxjs;
     workboxDest = configJSON.workboxjsDest;
     workboxPatterns = configJSON.workboxjsPatterns;

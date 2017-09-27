@@ -1,6 +1,6 @@
 # <a name="welcome"></a> Welcome
 
-This project is being built with the [Madness Enjin](https://github.com/MadnessLabs/MadnessEnjinCLI), so it helps to understand some basic concepts of the tool.  All of the variables for your application are stored in ```enjin.json``` file.  You also have a ```.env``` files to overwrite variables set in enjin.json or add new values per environment.  Then all the commands accept a ```-e``` flag that you can use to set the environment.  So an example would be I create the following file in the root or run ```enjin env app``` to have it created for you.
+This project is being built with the [Madness Enjin](https://github.com/MadnessLabs/MadnessEnjinCLI), so it helps to understand some basic concepts of the tool.  All of the variables for your application are stored in ```enjin.json``` file.  You also have a ```enjin.*.json``` files to overwrite variables set in enjin.json or add new values per environment.  Then all the commands accept a ```-e``` flag that you can use to set the environment.  So an example would be I create the following file in the root or run ```enjin env app``` to have it created for you.
 
 ### enjin.app.json
 
@@ -155,8 +155,7 @@ These commands allow quick adding of different peices of the application.  The f
 
 ### **gulp add:component**
 - -n [NAME] => The name of the new component (Name should be Camel Case - Ex: feedCard)
-- -a [ATTRIBUTES] => The list of attributes for the directive (Comma Separated)
-- -r [RESTRICT] => Type of directive (Default: AE)
+- -p [PROPS] => The list of props for the custom element (Comma Separated)
 
 Creates a component, which is a directive that consists of a .ts, .pug, and .scss files, then copies a snippet to your clipboard. This should be used for anything that you want to use multiple places in the app like the FeedCard.
 
