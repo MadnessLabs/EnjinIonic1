@@ -21,7 +21,7 @@ module.exports = function(callback) {
     if (configJSON.extension && !configJSON.extension.routes) {
         configJSON.extension.routes = configJSON.routes;
     }
-    global.enjin.stack = configJSON.stack;
+
     // APP
     appName      = configJSON.name;
     appDebug     = configJSON.debug;
