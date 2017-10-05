@@ -11,6 +11,6 @@ module.exports = function(name, dir) {
     .pipe(clean({force: true}));
     
     setTimeout(function(){
-        runSequence('router', 'js:build', 'sync:reload');
+        runSequence('router', 'js:build');
     }, 2000);
 };

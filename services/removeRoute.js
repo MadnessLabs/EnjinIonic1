@@ -17,6 +17,6 @@ module.exports = function(name) {
     }
     
     setTimeout(function(){
-        runSequence('router', 'js:build', 'sync:reload');
+        runSequence('router', 'js:build');
     }, 2000);
 };

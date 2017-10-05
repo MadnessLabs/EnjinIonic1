@@ -9,6 +9,7 @@ module.exports = function(gulp, callback) {
         //'css:lint', 
         'css:compile', 
         'css:concat',
+        'sync:reload',
         callback
     );
 };

@@ -4,6 +4,11 @@ const uglify    = require('gulp-uglify');
 
 
 module.exports = function(gulp, callback) {
+    if (appLocal) {
+        console.log('Skipping js minification on local build...');
+        callback();
+        return false;
+    }
     return gulp.src(jsDestDir+jsDestFile)
         .pipe(plumber({
             errorHandler: function(error) {

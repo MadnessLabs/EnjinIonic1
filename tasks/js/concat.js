@@ -9,5 +9,9 @@ module.exports = function(gulp, callback) {
         .pipe(sourcemaps.init())
         .pipe(concat(jsDestFile))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(jsDestDir));
+        .pipe(gulp.dest(jsDestDir)).on('end', function() {
+            if (global.isWatching) {
+                browserSync.reload();
+            }
+        });
 };

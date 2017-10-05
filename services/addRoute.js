@@ -60,6 +60,6 @@ module.exports = function(name, url, template, controller, resolver, view) {
         }))
         .pipe(gulp.dest("./"))
         .on('end', function(){
-            runSequence('router', 'js:build', 'sync:reload');
+            runSequence('router', 'js:build');
         });
 };

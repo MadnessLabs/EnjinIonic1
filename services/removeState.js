@@ -33,6 +33,6 @@ module.exports = function(name) {
     .pipe(clean({force: true}));
     
     setTimeout(function(){
-        runSequence('router', 'js:build', 'sync:reload');
+        runSequence('router', 'js:build');
     }, 2000);
 };

@@ -3,6 +3,11 @@ const rename = require('gulp-rename');
 const minifyCss = require('gulp-clean-css');
 
 module.exports = function(gulp, callback) {
+    if (appLocal) {
+        console.log('Skipping css minification on local build...');
+        callback();
+        return false;
+    }
     return gulp.src(cssDestDir+cssDestFile)
         .pipe(plumber({
             errorHandler: function(error) {

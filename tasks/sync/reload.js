@@ -1,4 +1,7 @@
 module.exports = function(gulp, callback) {
-    browserSync.reload();
+    if (global.isWatching) {
+        browserSync.reload();
+    }
+    
     callback();
 }

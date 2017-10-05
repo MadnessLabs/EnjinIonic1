@@ -7,7 +7,6 @@ module.exports = function(gulp, callback) {
         'config',
         'router',
         'html:build', 
-        'css:build',
-        callback
+        'css:build'
     );
 };
