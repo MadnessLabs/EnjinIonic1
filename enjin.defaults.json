@@ -1,0 +1,103 @@
+{
+  "buildDir": "build/",
+  "root": "www/",
+  "mobile": false,
+  "local": true,
+  "debug": true,
+  "version": "1.0.0",
+  "stenciljs": {
+    "generateDistribution": true,
+    "distDir": "www/components",
+    "namespace": "app",
+    "srcDir": "stenciljs",
+    "generateWWW": false,
+    "bundles": [
+      {
+        "components": []
+      }
+    ]
+  },
+  "defaultRoute": false,
+  "plugins": [
+    "ionic"
+  ],
+  "html": {
+    "dir": "html/",
+    "file": "index.html",
+    "srcDir": "app/pug/",
+    "srcFile": "app.pug",
+    "watch": [
+      "app/pug/**/*.pug",
+      "!app/pug/favicon.pug"
+    ]
+  },
+  "css": {
+    "dir": "css/",
+    "file": "build.css",
+    "srcDir": "app/scss/",
+    "watch": [
+      "app/scss/**/*.scss",
+      "!app/scss/libraries.scss",
+      "!app/scss/_variables.scss"
+    ],
+    "vars": {
+      "theme": {
+        "primary": "#0F78B9",
+        "secondary": "#0090ED",
+        "warning": "#EF473A",
+        "dark-gray": "#666666",
+        "light-gray": "#BDBDBD"
+      },
+      "light": "#ffffff !default",
+      "stable": "#eeeeee !default",
+      "positive": "$theme-primary !default",
+      "calm": "$theme-secondary !default",
+      "balanced": "#17A05E !default",
+      "energized": "#ffc900 !default",
+      "assertive": "$theme-warning !default",
+      "royal": "#886aea !default",
+      "dark": "$theme-dark-gray !default",
+      "ionicons-font-path": "'../fonts' !default",
+      "screen": {
+        "xl": "1500px",
+        "lg": "1200px",
+        "md": "992px",
+        "sm": "768px",
+        "xs": "480px"
+      },
+      "grid": {
+        "responsive": {
+          "sm-break": "$screen-sm",
+          "md-break": "$screen-md",
+          "lg-break": "$screen-lg"
+        }
+      },
+      "main-color": "$theme-secondary !default",
+      "icons-font-size": "24px !default"
+    }
+  },
+  "js": {
+    "dir": "js/",
+    "file": "build.js",
+    "srcDir": "app/ts/",
+    "watch": [
+      "app/ts/**/*.ts",
+      "!app/ts/router.ts",
+      "!app/ts/app.ts"
+    ]
+  },
+  "font": {
+    "dir": "fonts/",
+    "watch": ["node_modules/ionic-sdk/release/fonts/**"]
+  },
+  "img": {
+    "dir": "img/",
+    "favicon": "resources/icon.png",
+    "watch": [
+      "resources/**"
+    ]
+  },
+  "workboxjsIgnores": [
+    "js/build.js"
+  ]
+}
