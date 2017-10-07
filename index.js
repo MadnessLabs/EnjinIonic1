@@ -3,7 +3,7 @@ const setEnjinGlobal = require('./services/setEnjinGlobal');
 module.exports = function() {
     setEnjinGlobal();
     return {
-        tasksDir: 'enjin/tasks.js',
+        tasksDir: 'node_modules/@enjin/ionic1/tasks.js',
         enjin: global.enjin
     }
 };
