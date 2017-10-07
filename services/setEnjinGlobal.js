@@ -7,7 +7,7 @@ const merge = require('./merge');
 module.exports = function() {
     var envFiles = [process.cwd() + '/enjin.json'];
     var enjins = [
-        require(process.cwd() + '/enjin/enjin.defaults.json'),
+        require(process.cwd() + '/node_modules/@enjin/ionic1/enjin.defaults.json'),
         JSON.parse(fs.readFileSync(envFiles[0]))
     ];
     if (argv.env) {
