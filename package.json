@@ -45,8 +45,11 @@
     "gulp-typescript": "^3.2.2",
     "gulp-uglify": "^3.0.0",
     "inline-sourcemap-concat": "^0.2.0",
+    "inquirer": "^3.3.0",
     "lodash": "^4.17.4",
     "ng-config": "^1.0.0",
+    "path": "^0.12.7",
+    "typescript": "^2.5.3",
     "workbox-build": "^2.1.0",
     "yargs": "^9.0.1"
   }

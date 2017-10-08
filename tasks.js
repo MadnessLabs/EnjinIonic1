@@ -1,5 +1,8 @@
 const gulp = require('gulp');
 
+// ADD COMMANDS
+gulp.task('add:controller', require('./tasks/add/controller'));
+
 // BUILD COMMANDS
 gulp.task('build', require('./services/build'));
 gulp.task('build:clean', require('./services/build/clean'));
@@ -31,6 +34,9 @@ gulp.task('js:concat', require('./services/js/concat'));
 gulp.task('js:config', require('./services/js/config'));
 gulp.task('js:minify', require('./services/js/minify'));
 gulp.task('js:router', require('./services/js/router'));
+
+// REMOVE COMMANDS
+gulp.task('remove:controller', require('./tasks/remove/controller'));
 
 // STENCIL COMMANDS
 gulp.task('stencil:build', require('./services/stencil/build'));
