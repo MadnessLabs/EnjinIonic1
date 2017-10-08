@@ -99,5 +99,107 @@
   },
   "workboxjsIgnores": [
     "js/build.js"
-  ]
+  ],
+  "commands": {
+    "add": {
+      "subcommands": {
+        "controller": {
+          "description": "Adding controller to your project",
+          "questions": [{
+            "type": "input",
+            "message": "What is the name of the controller?",
+            "name": "name",
+            "alias": "n"
+          }, {
+            "type": "input",
+            "message": "What dependencies need to be injected? (Comma Separated List)",
+            "name": "dependencies",
+            "alias": "d"
+          }]
+        },
+        "directive": {
+          "description": "Removing directive from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the directive?",
+              "name": "name",
+              "alias": "n"
+          }, {
+              "type": "input",
+              "message": "What attributes will you be binding? (Comma separated)",
+              "name": "attrs",
+              "alias": "a"
+          }]
+        }
+      }
+    },
+    "build": {
+      "direct": true,
+      "subcommands": {
+        "clean": {},
+        "config": {"direct": true},
+        "css": {"direct": true},
+        "js": {"direct": true},
+        "watch": {}
+      }
+    },
+    "css": {
+      "subcommands": {
+        "compile": {},
+        "concat": {},
+        "config": {},
+        "import": {},
+        "libraries": {},
+        "minify": {}
+      }
+    },
+    "default": {"direct": true},
+    "git": {
+      "subcommands": {
+        "reset": {}
+      }
+    },
+    "html": {
+      "subcommands": {
+        "compile": {}
+      }
+    },
+    "js": {
+      "subcommands": {
+        "app": {},
+        "compile": {},
+        "concat": {},
+        "config": {},
+        "minify": {},
+        "router": {}
+      }
+    },
+    "stencil": {},
+    "sync": {},
+    "remove": {
+      "controller": {
+        "description": "Removing controller from your project",
+        "questions": [{
+            "type": "input",
+            "message": "What is the name of the controller you would like to remove?",
+            "name": "name",
+            "alias": "n"
+        }, {
+            "type": "input",
+            "message": "What is the directory of the controller?",
+            "name": "dir",
+            "alias": "d"
+        }]
+      },
+      "directive": {
+        "description": "Removing directive from your project",
+        "questions": [{
+            "type": "input",
+            "message": "What is the name of the directive you would like to remove?",
+            "name": "name",
+            "alias": "n"
+        }]
+      }
+    }
+  }
 }
