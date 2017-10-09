@@ -5,18 +5,6 @@
   "local": true,
   "debug": true,
   "version": "1.0.0",
-  "stenciljs": {
-    "generateDistribution": true,
-    "distDir": "www/components",
-    "namespace": "app",
-    "srcDir": "stenciljs",
-    "generateWWW": false,
-    "bundles": [
-      {
-        "components": []
-      }
-    ]
-  },
   "defaultRoute": false,
   "plugins": [
     "ionic"
@@ -276,6 +264,7 @@
       }
     },
     "default": {"direct": true},
+    "favicons": {},
     "git": {
       "subcommands": {
         "reset": {}

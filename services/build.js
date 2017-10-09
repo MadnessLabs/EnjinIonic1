@@ -1,11 +1,8 @@
 const gulp = require('gulp');
 
 const buildClean = require('../services/build/clean');
-const buildJs = require('../services/build/js');
-const buildCss = require('../services/build/css');
-const stencilBuild = require('../services/stencil');
-const htmlCompile = require('../services/html/compile');
 const setEnjinGlobal = require('../services/setEnjinGlobal');
+const buildTasks = require('../services/buildTasks');
 
 
 module.exports = gulp.series(
@@ -15,7 +12,7 @@ module.exports = gulp.series(
         done();
     },  
     buildClean, 
-    gulp.parallel(buildJs, stencilBuild, buildCss, htmlCompile),
+    gulp.parallel(...buildTasks()),
     function(done) {
         if (global.synced) {
             console.log('Turning back on reload...');
