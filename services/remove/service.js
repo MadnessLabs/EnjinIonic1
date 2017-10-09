@@ -2,9 +2,9 @@ const del = require('del');
 
 
 module.exports = function(params, callback) {
-    var directivePath = `${process.cwd()}/${params.dir ? params.dir : global.enjin.js.srcDir + 'directive'}/${params.name}.ts`;
-    console.log(`Removing directive @ ${directivePath}`);
-    del([directivePath]).then(() => {
+    var servicePath = `${process.cwd()}/${params.dir ? params.dir : global.enjin.js.srcDir + 'service'}/${params.name}.ts`;
+    console.log(`Removing service @ ${servicePath}`);
+    del([servicePath]).then(() => {
         if (callback && typeof callback === 'function') {
             callback();
         }

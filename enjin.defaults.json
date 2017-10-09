@@ -299,28 +299,106 @@
     "stencil": {},
     "sync": {},
     "remove": {
-      "controller": {
-        "description": "Removing controller from your project",
-        "questions": [{
-            "type": "input",
-            "message": "What is the name of the controller you would like to remove?",
-            "name": "name",
-            "alias": "n"
-        }, {
-            "type": "input",
-            "message": "What is the directory of the controller?",
-            "name": "dir",
-            "alias": "d"
-        }]
-      },
-      "directive": {
-        "description": "Removing directive from your project",
-        "questions": [{
-            "type": "input",
-            "message": "What is the name of the directive you would like to remove?",
-            "name": "name",
-            "alias": "n"
-        }]
+      "subcommands": {
+        "controller": {
+          "description": "Removing controller from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the controller you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "directive": {
+          "description": "Removing directive from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the directive you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "filter": {
+          "description": "Removing filter from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the filter you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "modal": {
+          "description": "Removing modal from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the modal you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "model": {
+          "description": "Removing model from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the model you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "page": {
+          "description": "Removing page from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the page you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "popover": {
+          "description": "Removing popover from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the popover you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "resolver": {
+          "description": "Removing resolver from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the resolver you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "route": {
+          "description": "Removing route from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the route you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "service": {
+          "description": "Removing service from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the service you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "state": {
+          "description": "Removing state from your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the state you would like to remove?",
+              "name": "name",
+              "alias": "n"
+          }]
+        }
       }
     }
   }

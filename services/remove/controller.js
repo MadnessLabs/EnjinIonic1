@@ -2,7 +2,7 @@ const del = require('del');
 
 
 module.exports = function(params, callback) {
-    controllerPath = `${process.cwd()}/${params.dir ? params.dir : global.enjin.js.srcDir + 'controller'}/${params.name}.ts`;
+    var controllerPath = `${process.cwd()}/${params.dir ? params.dir : global.enjin.js.srcDir + 'controller'}/${params.name}.ts`;
     console.log(`Removing controller @ ${controllerPath}`);
     del([controllerPath]).then(() => {
         if (callback && typeof callback === 'function') {
