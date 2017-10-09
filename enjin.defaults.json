@@ -118,7 +118,7 @@
           }]
         },
         "directive": {
-          "description": "Removing directive from your project",
+          "description": "Adding directive to your project",
           "questions": [{
               "type": "input",
               "message": "What is the name of the directive?",
@@ -129,6 +129,128 @@
               "message": "What attributes will you be binding? (Comma separated)",
               "name": "attrs",
               "alias": "a"
+          }]
+        },
+        "filter": {
+          "description": "Adding filter to your project",
+          "questions": [{
+            "type": "input",
+            "message": "What is the name of the filter?",
+            "name": "name",
+            "alias": "n"
+          }]
+        },
+        "modal": {
+          "description": "Adding modal to your project",
+          "questions": [{
+            "type": "input",
+            "message": "What is the name of the modal?",
+            "name": "name",
+            "alias": "n"
+          }]
+        },
+        "model": {
+          "description": "Adding a model to your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the model?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "page": {
+          "description": "Adding page to your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the page?",
+              "name": "name",
+              "alias": "n"
+          }, {
+              "type": "input",
+              "message": "What resolves will the page need?",
+              "name": "resolves",
+              "alias": "r"
+          }]
+        },
+        "popover": {
+          "description": "Adding popover to your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the popover?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "resolver": {
+          "description": "Adding a resolver to your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the resolver?",
+              "name": "name",
+              "alias": "n"
+          }, {
+              "type": "input",
+              "message": "What do you need to resolve? (Comma Separated List)",
+              "name": "resolves",
+              "alias": "n"
+          }]
+        },
+        "route": {
+          "description": "Adding a route to your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the state name?",
+              "name": "name",
+              "alias": "n"
+          },{
+              "type": "input",
+              "message": "What is the url? ( Beginning with / )",
+              "name": "url",
+              "alias": "u"
+          },{
+              "type": "input",
+              "message": "What is the path to the template?",
+              "name": "template",
+              "alias": "t"
+          },{
+              "type": "input",
+              "message": "What is the name of the controller?",
+              "name": "controller",
+              "alias": "c"
+          },{
+              "type": "input",
+              "message": "What is the name of the resolver?",
+              "name": "resolver",
+              "alias": "r"
+          }]
+        },
+        "service": {
+          "description": "Adding a service to your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the service?",
+              "name": "name",
+              "alias": "n"
+          }]
+        },
+        "state": {
+          "description": "Adding a state to your project",
+          "questions": [{
+              "type": "input",
+              "message": "What is the name of the state?",
+              "name": "name",
+              "alias": "n"
+          }, {
+              "type": "input",
+              "message": "What is the name of the view?",
+              "name": "view",
+              "default": "tab",
+              "alias": "v"
+          }, {
+              "type": "input",
+              "message": "What are the resolves needed? (Comma Separated List)",
+              "name": "resolves",
+              "alias": "r"
           }]
         }
       }

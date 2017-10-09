@@ -1,3 +1,6 @@
+# DO NOT USE FOR A NEW APP
+This build process is for existing ionic1 / angular 1 applications looking to migrate out of these old technologies and into new ones.  Please consider one of our other stacks if you are starting a new project.
+
 # <a name="welcome"></a> Welcome
 
 This project is being built with the [Madness Enjin](https://github.com/MadnessLabs/MadnessEnjinCLI), so it helps to understand some basic concepts of the tool.  All of the variables for your application are stored in ```enjin.json``` file.  You also have a ```enjin.*.json``` files to overwrite variables set in enjin.json or add new values per environment.  Then all the commands accept a ```-e``` flag that you can use to set the environment.  So an example would be I create the following file in the root or run ```enjin env app``` to have it created for you.

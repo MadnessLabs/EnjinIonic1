@@ -16,7 +16,7 @@ module.exports = function(command, subcommand = null, callback = false) {
         this.questions = currentCommand['questions'] ? currentCommand['questions'] : false;
     }
     
-    if (argv.n || argv.name) {
+    if (Object.keys(argv).length >= 5) {
         var params = {};
         if (this.questions) {
             this.questions.map((question) => {
