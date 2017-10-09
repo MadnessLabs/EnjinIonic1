@@ -5,14 +5,14 @@ const argv     = require('yargs').argv;
 module.exports = function(command, subcommand = null, callback = false) {
     var currentCommand = {};
     if (subcommand) {
-        currentCommand = global.enjin.commands[command] && global.enjin.commands[command][subcommand] ? global.enjin.commands[command][subcommand] : {}; 
+        currentCommand = global.enjin.commands[command] && global.enjin.commands[command]['subcommands'][subcommand] ? global.enjin.commands[command]['subcommands'][subcommand] : {}; 
         this.displayName = currentCommand['description'] ? currentCommand['description'] : `${command}:${subcommand}`;
-        this.service = require(currentCommand['service'] ? currentCommand['service'] : `../services/${command}/${subcommand}`);
+        this.service = require(currentCommand['service'] ? process.cwd() + '/' + currentCommand['service'] : `../services/${command}/${subcommand}`);
         this.questions = currentCommand['questions'] ? currentCommand['questions'] : false;
     } else {
-        currentCommand = global.enjin.commands[command] ? global.enjin.commands[command][subcommand] : {};
+        currentCommand = global.enjin.commands[command] ? global.enjin.commands[command] : {};
         this.displayName = currentCommand['description'] ? currentCommand['description'] : `${command}`;
-        this.service = require(currentCommand['service'] ? currentCommand['service'] : `../services/${command}`);
+        this.service = require(currentCommand['service'] ? process.cwd() + '/' + currentCommand['service'] : `../services/${command}`);
         this.questions = currentCommand['questions'] ? currentCommand['questions'] : false;
     }
     
@@ -28,7 +28,7 @@ module.exports = function(command, subcommand = null, callback = false) {
         }
     } else {
         if (this.questions) {
-            inquirer.prompt(questions).then((res) => {
+            inquirer.prompt(this.questions).then((res) => {
                 service(res, callback);
             });
         } else {

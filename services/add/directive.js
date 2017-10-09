@@ -1,8 +1,8 @@
 const renderToFile = require('../../services/renderToFile');
 const npc = require('copy-paste');
 
-
 module.exports = function(params, callback) {
+    
     var attrsJson = {};
     var attrProps = [];
     var attrName; 
