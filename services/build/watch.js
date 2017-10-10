@@ -1,4 +1,7 @@
 const gulp = require('gulp');
+const cache = require('gulp-cached');
+
+const images = require('../images');
 
 
 const buildWatch = function() {
@@ -9,6 +12,9 @@ const buildWatch = function() {
     gulp.watch(global.enjin.js.watch, require('./js'));
     if (global.enjin.stenciljs) {
         gulp.watch(global.enjin.stenciljs.watch, require('../stencil'));
+    }
+    if (global.enjin.img && global.enjin.img.watch) {
+        gulp.watch(global.enjin.img.watch, images);
     }
 };
 buildWatch.displayName = 'Watching build for changes';

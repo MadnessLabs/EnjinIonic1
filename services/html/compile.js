@@ -24,7 +24,6 @@ const htmlCompile = function(callback) {
             if(file.basename+'.'+ext === global.enjin.html.srcFile){
                 file.basename = 'index';
                 file.dirname = '../';
-                reload = global.isWatching && global.synced;
             }
         }))
         .pipe(gulp.dest(global.enjin.root + global.enjin.html.dir))

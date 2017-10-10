@@ -80,7 +80,9 @@
   },
   "img": {
     "dir": "img/",
+    "srcDir": "resources/",
     "favicon": "resources/icon.png",
+    "conifg": {},
     "watch": [
       "resources/**"
     ]
@@ -275,6 +277,7 @@
         "compile": {}
       }
     },
+    "images": {},
     "js": {
       "subcommands": {
         "app": {},

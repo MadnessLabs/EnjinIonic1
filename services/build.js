@@ -7,6 +7,9 @@ const buildTasks = require('../services/buildTasks');
 
 module.exports = gulp.series(
     function(done) {
+        if (global.synced) {
+            global.browserSync.notify('Running build, please wait...');
+        }
         setEnjinGlobal();
         global.reload = false;
         done();

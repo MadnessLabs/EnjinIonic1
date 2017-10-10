@@ -19,7 +19,7 @@ This project is being built with the [Madness Enjin](https://github.com/MadnessL
 }
 ```
 
-Now you can run ```gulp android -e app``` to run a build on android using the ```.env-app``` file you created.  This is a very powerful concept that could make any variable change per environment.  You could have colors set to signify each environment, pages that are environment exclusive, or it's also a great place to store sensitive information as shown above with the Android keystore password because it shouldn't be synced with the repo.
+Now you can run ```gulp -e app``` to run a build using the ```enjin.app.json``` file you created.  This is a very powerful concept that could make any variable change per environment.  You could have colors set to signify each environment, pages that are environment exclusive, or it's also a great place to store sensitive information as shown above with the Android keystore password because it shouldn't be synced with the repo.
 
 The other huge part of the Enjin is the [Commands](#commands) that allow you to generate code, automate dumb tasks, and maintain code quality.  This README should serve as a guide on how to use all of these wonderful tools.  Enjoy and if we have helped you out in any way then please [Support us on Patreon](https://www.patreon.com/madnesslabs) so we can continue to development on Madness Enjin.
 
@@ -39,6 +39,7 @@ Below is a list of resources to help understand the software stack better.  Keep
 * <a href="http://sass-lang.com/" target="_blank">SASS</a> - For writting cleaner and variable capable CSS.
 * <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> - For using ES6 with static typing.
 * <a href="https://pugjs.org/" target="_blank">Pug</a> - For writing cleaner and variable capable HTML.
+* <a href="https://github.com/mahnunchik/gulp-responsive" target="_blank">Gulp Responsive</a> - For resizing images
 
 ### <a name="instructions"></a> SETUP ENVIRONMENT INSTRUCTIONS
 
@@ -56,17 +57,24 @@ After you Have installed all of the dependencies using the step by step above yo
 Installation is required if you wish to view the application.  This assumes you have installed all of the **[Dependencies](#dependencies)**. Run the command below to install the build dependencies, build the web root from source files, and start a [Browser Sync](http://www.browsersync.io/) session in the default browser, to begin building.
 
 ```
-enjin install [GITHUB_USERNAME]:[GITHUB_PASSWORD]@MadnessLabs/DexSphere
+enjin start [GITHUB_USERNAME]:[GITHUB_PASSWORD]@MadnessLabs/EnjinIonic1 [APP_NAME]
 ```
 
 OR
 
 ```
-git clone https://github.com/MadnessLabs/dexsphere.git
+git clone https://github.com/MadnessLabs/EnjinIonic1.git
 Password: [GITHUB_PASSWORD]
-cd dexsphere
+cd EnjinIonic1
 npm install
 ``` 
+
+OR TO ADD TO EXISTING PROJECT
+
+```
+npm install --save-dev gulpjs/gulp#4.0 frankwallis/gulp-hub#4.1.0 @enjin/ionic1
+enjin init
+```
 
 Now watch your console go crazy and wait for it to ask you some questions about your app.  Answer the questions, then it will finish the install and open your new app in the browser, ready to be worked on. 
 
@@ -91,7 +99,7 @@ Open Shell to project's root and run
  ```
  gulp
  ```
-That's it! Now when you make changes to the files in src/ directory, the browser will reload to show changes auto-magically.
+That's it! Now when you make changes to the files in app/ directory, the browser will reload to show changes auto-magically.
 
 ---
 
@@ -104,49 +112,38 @@ Enjin commands allow us to automate the repetitive tasks that come with scaling 
 
 General command for building and running a live reloading server.
 
-### **gulp android**
-- -e [ENVIRONMENT] => This is the environment you would like to build for
+### **gulp workbox**
 
-Build, package APK and run Android app on emulator or device .
+Generates service worker for your application using WorkBox.
 
-### **gulp deploy**
-- -e [ENVIRONMENT] => This is the environment you would like to build for
-- -n [NOTE] => The note you would like on the deploy
+### **gulp stencil**
 
-A wrapper for Ionic Deploy that builds and deploys to selected environment.
+If enjin.json {```stenciljs```} is setup then this command will run a stenciljs build using that config.
 
-### **gulp install**
 
-This command will be run on a brand new project in order to setup your enjin.json and get the project ready to be worked on.
+---
 
-### **gulp ios**
-- -e [ENVIRONMENT] => This is the environment you would like to build for
+# <a name="build-commands"></a> Build Commands
 
-Build and package app so that it may be deployed via xCode.
+These commands will build different pieces of your application.
 
-### **gulp lint**
-- -e [ENVIRONMENT] => This is the environment you would like to build for
+### **gulp build**
 
-Check formatting of all the files in the project.
+Runs a build of the entire project, that will include scss, ts, pug, images, ect.
 
-### **gulp minify**
-- -e [ENVIRONMENT] => This is the environment you would like to build for
+### **gulp html:build**
 
-Minify CSS and JS files
+Runs a build of the .pug files into www/html
 
-### **gulp reinstall**
+### **gulp build:css**
 
-This command will be run on project that is already setup to reconfigure enjin.json and get the project ready to be worked on.
+Runs a build of the .scss files into www/css/build.css and a minified build to www/css/build.min.css
 
-### **gulp router**
+### **gulp build:js**
 
-Generate app/ts/router.ts file from enjin.json routes.
+Runs a build of the .ts files into www/js/build.js and a minified build to www/js/build.min.js
 
-### **gulp typings**
-
-Install typings for project (TypeScript uses typings to catch errors before the code is compiled).
-
-### **gulp watch**
+### **gulp build:watch**
 
 The file watcher that runs builds for each type of file (This task is auto-run with gulp).
 
@@ -155,12 +152,6 @@ The file watcher that runs builds for each type of file (This task is auto-run w
 # <a name="add-commands"></a> Add Commands
 
 These commands allow quick adding of different peices of the application.  The flags are not required, they just make it faster if you know what you want.  If no flags are passed it will prompt you to answer questions.
-
-### **gulp add:component**
-- -n [NAME] => The name of the new component (Name should be Camel Case - Ex: feedCard)
-- -p [PROPS] => The list of props for the custom element (Comma Separated)
-
-Creates a component, which is a directive that consists of a .ts, .pug, and .scss files, then copies a snippet to your clipboard. This should be used for anything that you want to use multiple places in the app like the FeedCard.
 
 ### **gulp add:controller**
 - -n [NAME] => The name of the new controller (Name should be Camel Case - Ex: feedCard)
@@ -185,6 +176,11 @@ Creates a filter
 - -n [NAME] => The name of the new modal (Name should be Camel Case - Ex: feedCard)
 
 Creates an Ionic modal and then copies the snippet to implement it to the clipboard.
+
+### **gulp add:model**
+- -n [NAME] => The name of the new model (Name should start with Uppercase - Ex: User)
+
+Creates a service for a model, meaning something that will be used bound to a database.
 
 ### **gulp add:page**
 - -n [NAME] => The name of the new page (Name should be Camel Case - Ex: feedCard)
@@ -227,60 +223,9 @@ Creates a state, which consists of a controller (.ts), resolver (.ts), route (en
 
 ---
 
-# <a name="config-commands"></a> Config Commands
-
-These commands allow quick configuration of different peices of the application.  The flags are not required, they just make it faster if you know what you want.  If no flags are passed it will prompt you to answer questions.
-
-### **gulp config**
-- -e [ENVIRONMENT] => This is the environment you would like to build for
-
-Copies configuration variables from your enjin.json to various other project files.
-
-### **gulp config:build**
-
-Runs the config and a runs a build of the html and css.
-
-### **gulp config:cordova**
-
-Creates a Cordova config.xml file based off the enjin.json variable.
-
-### **gulp config:css**
-
-Creates app/scss/_variables.scss which contains all of the theme variables from enjin.json.
-
-### **gulp config:ionic**
-
-Creates ionic config file based off the enjin.json
-
-### **gulp config:js**
-
-Creates config file that allows access to your enjin variables inside your JavaScript (.ts) files.
-
-### **gulp config:node**
-
-Creates a package.json based off of the enjin.json file
-
-### **gulp config:platform**
-
-Creates app/ts/platform.ts file based off of the enjin.json file
-
-### **gulp config:run**
-
-Creates app/ts/run.ts file based off of the enjin.json file
-
-### **gulp config:sublime**
-
-Creates Sublime Text project file based off of the enjin.json file
-
----
-
 # <a name="css-commands"></a> CSS Commands
 
 These commands control the CSS build process.  The only flag is the ```-e [Environment]``` to control which .env file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
-
-### **gulp css:build**
-
-Runs a build of the .scss files into www/css/build.css and a minified build to www/css/build.min.css
 
 ### **gulp css:compile**
 
@@ -298,23 +243,9 @@ Creates app/scss/libraries.scss that contains all the libraries (.scss files) in
 
 Builds app/scss/libraries.scss into build/css/libraries.css so we can combine that at the top of our built css file.
 
-### **gulp css:lint**
-
-Lints the .scss files in app/scss for formatting issues.  Clean code makes happier coders! ^_^
-
 ### **gulp css:minify**
 
 Minifies www/css/build.css into www/css/build.min.css for production.
-
----
-
-# <a name="font-commands"></a> Font Commands
-
-These commands manage fonts on a project.
-
-### **gulp font:copy**
-
-Copies all font files specified in enjin.json {```fonts.watch```} into the {```fonts.dir```} directory.
 
 ---
 
@@ -322,21 +253,9 @@ Copies all font files specified in enjin.json {```fonts.watch```} into the {```f
 
 These commands control the HTML build process.  The only flag is the ```-e [Environment]``` to control which .env file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
 
-### **gulp html:build**
-
-Runs a build of the .pug files into www/html
-
 ### **gulp html:compile**
 
 Runs a build of the .pug files into www/html with linting.
-
-### **gulp html:lint**
-
-Lint the .pug files in app/pug for formatting issues.  Clean code makes happier coders! ^_^
-
-### **gulp html:template**
-
-Compiles src/pug/app.pug file into the frame for our app store in www/index.html file.
 
 ---
 
@@ -344,9 +263,13 @@ Compiles src/pug/app.pug file into the frame for our app store in www/index.html
 
 These commands manage images on a project.
 
-### **gulp img:icon**
+### **gulp favicons**
 
 Creates favicons and icon file for the application from resources/icon.png file.
+
+### **gulp images**
+
+Resizes images from enjin {```img.srcDir```} to {```img.dir```} using the configs from {```img.config```}. See <a href="https://github.com/mahnunchik/gulp-responsive" target="_blank">Gulp-Responsive Documentation</a> for examples
 
 ---
 
@@ -358,10 +281,6 @@ These commands control the JS build process.  The only flag is the ```-e [Enviro
 
 Creates src/ts/app.ts file from enjin.json file.
 
-### **gulp js:build**
-
-Runs a build of the .ts files into www/js/build.js and a minified build to www/js/build.min.js
-
 ### **gulp js:compile**
 
 Compiles the .ts files to JS in the build/js folder.
@@ -370,13 +289,13 @@ Compiles the .ts files to JS in the build/js folder.
 
 Concats together all of the .js files in build/js folder and creates www/js/build.js file.
 
-### **gulp js:lint**
-
-Lints the .ts files in app/ts for formatting issues.  Clean code makes happier coders! ^_^
-
 ### **gulp js:minify**
 
 Minifies www/js/build.js into www/js/build.min.js for production.
+
+### **gulp js:router**
+
+Generate app/ts/router.ts file from enjin.json routes.
 
 ---
 
@@ -408,6 +327,11 @@ Removes all traces of a filter from the project.
 - -n [NAME] => The name of the new modal (Name should be Camel Case - Ex: feedCard)
 
 Removes all traces of a modal from the project.
+
+### **gulp remove:model**
+- -n [NAME] => The name of the model to remove (Name should be Upper Case - Ex: User)
+
+Removes a model from the project.
 
 ### **gulp remove:page**
 - -n [NAME] => The name of the new page (Name should be Camel Case - Ex: feedCard)
@@ -445,16 +369,16 @@ Removes all traces of a state from the project.
 
 If you looked at the gulpfile.js you may have noticed that it doesn't include any of these tasks?!? This is because the build tasks are stored globally so that they can be updated and improved.
 
-If you need your own custom tasks for your project just create a folder named "tasks" under the root and create a new .js file for each new task as shown below.
+If you need your own custom tasks for your project just create a folder named "tasks" under the root and add the directory to your gulpfile.js as shown below.
 
-### tasks/example.js
+### gulpfile.js
 ```javascript
-module.exports = function(gulp, callback) {
-    return gulp.src('file.txt')
-        .pipe(gulp.dest('newLocation/folder'));
-};
+...
+
+const hub = new HubRegistry([enjin.tasksDir, 'tasks/**/*.ts']);
+
+...
 ```
-And to run I would just use ```gulp example``` because of the filename.  You can also use folders to organize your tasks.  So you could make a folder named "example" and fill it with tasks and run them like this ```gulp example:taskOne``` .
 
 ---
 
