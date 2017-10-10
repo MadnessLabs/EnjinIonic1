@@ -12,7 +12,7 @@ This project is being built with the [Madness Enjin](https://github.com/MadnessL
     "mobile": true,
     "local": false,
     "debug": true,
-    "type": "madnessionic",
+    "stack": "@enjin/ionic1",
     "android": {
         "keystorePassword": "YOUR ANDROID KEYSTORE PASSWORD"
     }
@@ -375,7 +375,7 @@ If you need your own custom tasks for your project just create a folder named "t
 ```javascript
 ...
 
-const hub = new HubRegistry([enjin.tasksDir, 'tasks/**/*.ts']);
+const hub = new HubRegistry([enjin.tasksDir, 'tasks/**/*.js']);
 
 ...
 ```
