@@ -112,6 +112,11 @@ Enjin commands allow us to automate the repetitive tasks that come with scaling 
 
 General command for building and running a live reloading server.
 
+### **gulp deploy**
+- -e [ENVIRONMENT] => This is the environment you would like to build and deploy to
+
+Builds the project for the environment passed and then uploads it via SSH with the enjin {```deploy.options```}. (See <a href="https://github.com/mscdex/ssh2" target="_blank">SSH2 Documentation</a> for config options)
+
 ### **gulp workbox**
 
 Generates service worker for your application using WorkBox.

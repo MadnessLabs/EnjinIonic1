@@ -1,16 +1,17 @@
 const gulp = require('gulp');
 
-const buildClean = require('../services/build/clean');
-const syncStart = require('../services/sync');
-const buildWatch = require('../services/build/watch');
-const buildTasks = require('../services/buildTasks');
-const htmlInject = require('../services/html/inject');
+const buildClean = require('./build/clean');
+const syncStart = require('./sync');
+const buildWatch = require('./build/watch');
+const buildTasks = require('./buildTasks');
+const htmlInject = require('./html/inject');
 
 const defaultTasks = function() {
     var tasks = [gulp.series(buildClean, gulp.parallel(...buildTasks()))];
     if (global.enjin.local) {
-        tasks.push(htmlInject, gulp.parallel(syncStart, buildWatch));
-    };
+        tasks.push(htmlInject);
+    }
+    tasks.push(gulp.parallel(syncStart, buildWatch));
     return tasks;
 };
 

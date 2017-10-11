@@ -17,12 +17,10 @@ const workbox = function(callback) {
     };
 
     del([wbOpts.swDest, wbOpts.globDirectory + 'workbox-sw.*']).then(() => {
-        wbBuild.generateSW(wbOpts)
-        .then(() => {
+        wbBuild.generateSW(wbOpts).then(() => {
             console.log('Service worker generated.');        
             callback();
-        })
-        .catch((err) => {
+        }).catch((err) => {
             console.log('[ERROR] This happened: ' + err);
             callback();
         });

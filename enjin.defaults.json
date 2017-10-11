@@ -87,9 +87,13 @@
       "resources/**"
     ]
   },
-  "workboxjsIgnores": [
-    "js/build.js"
+  "workboxIgnores": [
+    "js/build.js",
+    "css/build.css"
   ],
+  "deploy": {
+    "type": "ssh"
+  },
   "commands": {
     "add": {
       "subcommands": {
@@ -266,6 +270,7 @@
       }
     },
     "default": {"direct": true},
+    "deploy": {"direct": true},
     "favicons": {},
     "git": {
       "subcommands": {
@@ -393,6 +398,7 @@
           }]
         }
       }
-    }
+    },
+    "workbox": {}
   }
 }

@@ -1,9 +1,9 @@
 const gulp = require('gulp');
 
-const buildClean = require('../services/build/clean');
-const setEnjinGlobal = require('../services/setEnjinGlobal');
-const buildTasks = require('../services/buildTasks');
-const htmlInject = require('../services/html/inject');
+const buildClean = require('./build/clean');
+const setEnjinGlobal = require('./setEnjinGlobal');
+const buildTasks = require('./buildTasks');
+const htmlInject = require('./html/inject');
 
 
 module.exports = gulp.series(

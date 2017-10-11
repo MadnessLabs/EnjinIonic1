@@ -10,7 +10,8 @@ module.exports = function() {
         require(process.cwd() + '/node_modules/@enjin/ionic1/enjin.defaults.json'),
         JSON.parse(fs.readFileSync(envFiles[0]))
     ];
-    if (argv.env) {
+    if (argv.env || argv.e) {
+        argv.env = argv.env ? argv.env : argv.e ? argv.e : null;
         process.env.NODE_ENV = argv.env;
         try {
             var newEnv = `${process.cwd()}/enjin.${argv.env}.json`;
