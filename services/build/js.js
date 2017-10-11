@@ -6,4 +6,20 @@ const jsConcat = require('../js/concat');
 const jsMinify = require('../js/minify');
 
 
-module.exports = gulp.series(gulp.parallel(jsConfig, jsCompile), jsConcat, jsMinify);
+const jsTasks = function() {
+    var tasks = [gulp.parallel(jsConfig, jsCompile)];
+    if (!global.enjin.local) {
+        tasks.push(jsConcat, jsMinify);
+    } else {
+        tasks.push(function(done) {
+            if (global.reload) {
+                global.browserSync.reload();
+            }
+            done();
+        });
+    }
+    return tasks;
+};
+
+
+module.exports = gulp.series(...jsTasks());

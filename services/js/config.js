@@ -3,7 +3,7 @@ const ngConfig = require('ng-config');
 const fs = require('fs-extra');
 
 const jsConfig = function(callback) {
-    var configFilePath = `${process.cwd()}/${global.enjin.buildDir}${global.enjin.js.dir}config.js`;
+    var configFilePath = `${global.enjin.buildDir}${global.enjin.js.dir}config.js`;
     var configFile = ngConfig({
         module: `${global.enjin.name}.config`,
         constants: {

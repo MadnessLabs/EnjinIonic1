@@ -20,7 +20,7 @@ const jsCompile = function(callback) {
         .pipe(cache('jsCompile'))
         .pipe(sourcemaps.init())
         .pipe(global.tsProject())
-        .js.pipe(sourcemaps.write()).pipe(gulp.dest(global.enjin.buildDir + global.enjin.js.dir)).on('end', function() {
+        .js.pipe(sourcemaps.write({sourceRoot: '../' + global.enjin.js.srcDir})).pipe(gulp.dest(global.enjin.buildDir + global.enjin.js.dir)).on('end', function() {
             callback();
         });
 };

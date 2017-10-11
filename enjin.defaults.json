@@ -274,7 +274,8 @@
     },
     "html": {
       "subcommands": {
-        "compile": {}
+        "compile": {},
+        "inject": {}
       }
     },
     "images": {},

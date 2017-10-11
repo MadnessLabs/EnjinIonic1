@@ -3,6 +3,7 @@ const gulp = require('gulp');
 const buildClean = require('../services/build/clean');
 const setEnjinGlobal = require('../services/setEnjinGlobal');
 const buildTasks = require('../services/buildTasks');
+const htmlInject = require('../services/html/inject');
 
 
 module.exports = gulp.series(
@@ -19,7 +20,9 @@ module.exports = gulp.series(
     function(done) {
         if (global.synced) {
             console.log('Turning back on reload...');
-            global.reload = true;
+            htmlInject(() => {
+                global.reload = true;
+            });
         }
         done();
     }

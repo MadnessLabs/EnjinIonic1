@@ -4,6 +4,8 @@ const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const cache = require('gulp-cached');
 
+const htmlInject = require('./inject');
+
 const htmlCompile = function(callback) {
     var ext = global.enjin.html.srcFile.split('.').pop();
     gulp.src(global.enjin.html.watch)
@@ -29,7 +31,9 @@ const htmlCompile = function(callback) {
         .pipe(gulp.dest(global.enjin.root + global.enjin.html.dir))
         .on('end', function() {
             if (global.synced && global.reload) {
-                global.browserSync.reload();
+                htmlInject(() => {
+                    global.browserSync.reload();
+                });
             }
 
             callback();

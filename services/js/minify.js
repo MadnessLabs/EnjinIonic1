@@ -4,11 +4,6 @@ const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 
 const jsMinify = function(callback) {
-    if (global.enjin.local) {
-        console.log('Skipping js minification on local build...');
-        callback();
-    }
-
     gulp.src(global.enjin.root + global.enjin.js.dir + global.enjin.js.file)
         .pipe(plumber({
             errorHandler: function(error) {

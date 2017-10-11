@@ -13,7 +13,7 @@ const syncStart = function(done) {
     global.enjin.browserSync = global.enjin.browserSync ? global.enjin.browserSync : {};
     var bsOpts = {
         port: global.enjin.browserSync.port ? global.enjin.browserSync.port : global.enjin.port ? global.enjin.port : 3000,
-        files: global.enjin.browserSync.files ? global.enjin.browserSync.files : false,
+        files: global.enjin.browserSync.files ? global.enjin.browserSync.files : global.enjin.css.build,
         reloadDebounce: global.enjin.browserSync.reloadDebounce ? global.enjin.browserSync.reloadDebounce : 100,
         injectChanges: global.enjin.browserSync.injectChanges ? global.enjin.browserSync.injectChanges : true,
         logFileChanges: global.enjin.browserSync.logFileChanges ? global.enjin.browserSync.logFileChanges : true,

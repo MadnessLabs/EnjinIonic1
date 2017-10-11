@@ -11,9 +11,6 @@ const jsConcat = function(callback) {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(global.enjin.root + global.enjin.js.dir))
         .on('end', function() {
-            if (global.synced && global.reload) {
-                global.browserSync.reload();
-            }
             callback();
         });    
 };

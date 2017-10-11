@@ -13,13 +13,7 @@ const cssConcat = function(callback) {
         return file;
     }))
     .pipe(concat(global.enjin.css.file))
-    .pipe(gulp.dest(global.enjin.root + global.enjin.css.dir));
-
-    if (global.synced && global.reload) {
-        concatPipe.pipe(global.browserSync.stream());
-    }
-
-    concatPipe.on('end', function() {
+    .pipe(gulp.dest(global.enjin.root + global.enjin.css.dir)).on('end', function() {
         fs.appendFile(`./${global.enjin.root}${global.enjin.css.dir}${global.enjin.css.file}`, smConcat.comment().replace('//#', '/*#') + ' */', function(err) {
             if(err) {
                 console.log(err);

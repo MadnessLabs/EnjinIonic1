@@ -257,6 +257,11 @@ These commands control the HTML build process.  The only flag is the ```-e [Envi
 
 Runs a build of the .pug files into www/html with linting.
 
+### **gulp html:inject**
+
+Injects js and css files into index.html file for easier development.
+
+
 ---
 
 # <a name="img-commands"></a> Image Commands
