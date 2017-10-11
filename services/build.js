@@ -22,6 +22,7 @@ module.exports = gulp.series(
             console.log('Turning back on reload...');
             htmlInject(() => {
                 global.reload = true;
+                global.browserSync.reload();
             });
         }
         done();
