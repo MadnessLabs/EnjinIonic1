@@ -7,12 +7,13 @@ const jsCompile = function(callback) {
     var endCount = 0;
     if (!global.tsProject) {
         console.log('Starting TypeScript compiler in Memory...');
-        global.tsProject = ts.createProject({
+        global.tsProject = ts.createProject(global.enjin.js.tsConfig ? global.enjin.js.tsConfig : {
+            skipLibCheck: true,
             noUnusedParameters: false,
-            "module": "system",
-            "removeComments": true,
-            "preserveConstEnums": true,
-            "sourceMap": true
+            module: "system",
+            removeComments: true,
+            preserveConstEnums: true,
+            sourceMap: true
         });
     }
     var tsFiles = global.enjin.js.watch.slice(0, -2);
