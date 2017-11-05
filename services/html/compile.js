@@ -30,13 +30,9 @@ const htmlCompile = function(callback) {
         }))
         .pipe(gulp.dest(global.enjin.root + global.enjin.html.dir))
         .on('end', function() {
-            if (global.synced && global.reload) {
-                htmlInject(() => {
-                    global.browserSync.reload();
-                });
+            if (callback && typeof callback === 'function') {
+                callback();
             }
-
-            callback();
         });
 };
 htmlCompile.displayName = 'Compiling html files';

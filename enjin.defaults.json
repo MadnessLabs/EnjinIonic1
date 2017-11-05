@@ -76,7 +76,7 @@
   },
   "font": {
     "dir": "fonts/",
-    "watch": ["node_modules/ionic-sdk/release/fonts/**"]
+    "copy": ["node_modules/ionic-sdk/release/fonts/**"]
   },
   "img": {
     "dir": "img/",
@@ -250,12 +250,13 @@
       }
     },
     "build": {
-      "direct": true,
+      "include": true,
       "subcommands": {
         "clean": {},
-        "config": {"direct": true},
-        "css": {"direct": true},
-        "js": {"direct": true},
+        "config": {},
+        "css": {},
+        "js": {},
+        "html": {},
         "watch": {}
       }
     },
@@ -270,8 +271,9 @@
       }
     },
     "default": {"direct": true},
-    "deploy": {"direct": true},
+    "deploy": {},
     "favicons": {},
+    "fonts": {},
     "git": {
       "subcommands": {
         "reset": {}
@@ -280,7 +282,8 @@
     "html": {
       "subcommands": {
         "compile": {},
-        "inject": {}
+        "inject": {},
+        "inline": {}
       }
     },
     "images": {},
@@ -290,6 +293,7 @@
         "compile": {},
         "concat": {},
         "config": {},
+        "copy": {},
         "minify": {},
         "router": {}
       }

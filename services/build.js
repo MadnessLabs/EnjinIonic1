@@ -1,30 +1,47 @@
 const gulp = require('gulp');
+const _ = require('lodash');
 
 const buildClean = require('./build/clean');
 const setEnjinGlobal = require('./setEnjinGlobal');
-const buildTasks = require('./buildTasks');
+const jsTasks = require('./js/tasks');
+const cssTasks = require('./css/tasks');
 const htmlInject = require('./html/inject');
+const htmlTasks = require('./html/tasks');
+const stencilBuild = require('./stencil');
+const images = require('./images');
+const buildRun = require('./build/run');
+const fonts = require('./fonts');
 
 
-module.exports = gulp.series(
-    function(done) {
-        if (global.synced) {
-            global.browserSync.notify('Running build, please wait...');
-        }
-        setEnjinGlobal();
-        global.reload = false;
-        done();
-    },  
-    buildClean, 
-    gulp.parallel(...buildTasks()),
-    function(done) {
-        if (global.synced) {
-            console.log('Turning back on reload...');
-            htmlInject(() => {
-                global.reload = true;
-                global.browserSync.reload();
-            });
-        }
-        done();
+module.exports = function(callback) {
+    if (global.synced) {
+        global.browserSync.notify('Running build, please wait...');
     }
-);
+
+    setEnjinGlobal();
+    var tasks = [];
+
+    buildRun('js', jsTasks(), () => {
+        console.log('build js task');
+        buildRun('css', cssTasks(), () => {
+            buildRun('html', htmlTasks(), () => {
+                if (global.enjin.stenciljs && (!global.lastEnjin || !_.isEqual(global.lastEnjin.stenciljs, global.enjin.stenciljs))) {
+                    tasks.push(stencilBuild);
+                }
+            
+                if (global.enjin.img && (!global.lastEnjin || !_.isEqual(global.lastEnjin.img, global.enjin.img))) {
+                    tasks.push(images);
+                }
+            
+                if (global.enjin.font && (!global.lastEnjin || !_.isEqual(global.lastEnjin.font, global.enjin.font))) {
+                    tasks.push(fonts);
+                }
+            
+                if (global.enjin.local) {
+                    tasks.push(htmlInject);
+                }
+                buildRun('config', tasks, callback);
+            });
+        });
+    });
+};

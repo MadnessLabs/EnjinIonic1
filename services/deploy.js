@@ -5,11 +5,11 @@ const buildClean = require('./build/clean');
 const buildTasks = require('./buildTasks');
 const deploySsh = require('./deploy/ssh');
 const workbox = require('./workbox');
+const htmlInline = require('./html/inline');
 
 
 module.exports = gulp.series(
-    buildClean, 
-    gulp.parallel(...buildTasks()),
+    ...buildTasks(),
     function(done) {
         var cssBuildPath = global.enjin.root + global.enjin.css.dir + global.enjin.css.file;
         var jsBuildPath = global.enjin.root + global.enjin.js.dir + global.enjin.js.file;
@@ -24,6 +24,7 @@ module.exports = gulp.series(
             }
         });
     },
+    htmlInline,
     workbox,
     deploySsh
 );

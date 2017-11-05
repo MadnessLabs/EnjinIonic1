@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const cache = require('gulp-cached');
 const ts = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
 
@@ -18,7 +17,6 @@ const jsCompile = function(callback) {
     }
     var tsFiles = global.enjin.js.watch.slice(0, -2);
     var tsResult = gulp.src(tsFiles)
-        .pipe(cache('jsCompile'))
         .pipe(sourcemaps.init())
         .pipe(global.tsProject())
         .js.pipe(sourcemaps.write({sourceRoot: '../' + global.enjin.js.srcDir})).pipe(gulp.dest(global.enjin.buildDir + global.enjin.js.dir)).on('end', function() {

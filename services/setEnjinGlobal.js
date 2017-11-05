@@ -5,6 +5,10 @@ const merge = require('./merge');
 
 
 module.exports = function() {
+    if (global.enjin) {
+        global.lastEnjin = global.enjin;
+    }
+
     var envFiles = [process.cwd() + '/enjin.json'];
     var enjins = [
         require(process.cwd() + '/node_modules/@enjin/ionic1/enjin.defaults.json'),

@@ -1,26 +1,13 @@
 const gulp = require('gulp');
 
-const jsApp = require('../js/app');
-const jsConfig = require('../js/config');
 const jsCompile = require('../js/compile');
-const jsConcat = require('../js/concat');
-const jsMinify = require('../js/minify');
+const jsCopy = require('../js/copy');
+const buildRun = require('./run');
 
-
-const jsTasks = function() {
-    var tasks = [jsApp, gulp.parallel(jsConfig, jsCompile)];
-    if (!global.enjin.local) {
-        tasks.push(jsConcat, jsMinify);
-    } else {
-        tasks.push(function(done) {
-            if (global.reload) {
-                global.browserSync.reload();
-            }
-            done();
-        });
-    }
-    return tasks;
+const buildJs = function(callback) {
+    global.injectHtml = true;
+    buildRun('js', [jsCompile, jsCopy], callback);
 };
+buildJs.displayName = 'Building JS files';
 
-
-module.exports = gulp.series(...jsTasks());
+module.exports = buildJs;

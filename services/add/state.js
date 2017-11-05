@@ -39,11 +39,12 @@ module.exports = function(params, callback) {
                             url: '/'+stateSteps[stateSteps.length - 1].toLowerCase(), 
                             template: 'html/state/'+params.name+'.html', 
                             controller: capFirstLetter(params.name)+'Controller', 
-                            resolver: params.resolves ? capFirstLetter(params.name)+'Resolver' : false, 
+                            resolver: params.resolves || global.enjin.lazyLoad ? capFirstLetter(params.name)+'Resolver' : false, 
                             view: params.view
                         }, () => {
-                            if (params.resolves) {
+                            if (params.resolves || global.enjin.lazyLoad) {
                                 addResolver({
+                                    type: 'state',
                                     name: params.name, 
                                     resolves: params.resolves
                                 }, callback);

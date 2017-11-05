@@ -25,7 +25,7 @@ const router = function(callback) {
         }))
         .pipe(gulp.dest(global.enjin.js.srcDir))
         .on('end', function() {
-            done();
+            callback();
         });
 };
 router.displayName = 'Generating router from enjin.json routes';

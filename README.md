@@ -117,6 +117,10 @@ General command for building and running a live reloading server.
 
 Builds the project for the environment passed and then uploads it via SSH with the enjin {```deploy.options```}. (See <a href="https://github.com/mscdex/ssh2" target="_blank">SSH2 Documentation</a> for config options)
 
+### **gulp fonts**
+
+Copy file globs from enjin {```font.copy```} to public directory.
+
 ### **gulp workbox**
 
 Generates service worker for your application using WorkBox.
@@ -143,6 +147,14 @@ Runs a build of the .pug files into www/html
 ### **gulp build:css**
 
 Runs a build of the .scss files into www/css/build.css and a minified build to www/css/build.min.css
+
+### **gulp build:inject**
+
+Inject CSS and JS files into your index page.
+
+### **gulp build:inline**
+
+Inline CSS and JS files that have inline attribute on your index page.
 
 ### **gulp build:js**
 

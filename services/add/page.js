@@ -34,10 +34,11 @@ module.exports = function(params, callback) {
                             url: '/'+params.name, 
                             template: 'html/page/'+params.name+'.html', 
                             controller: capFirstLetter(params.name)+'Controller',
-                            resolver: params.resolves ? capFirstLetter(params.name)+'Resolver' : false
+                            resolver: params.resolves || global.enjin.lazyLoad ? capFirstLetter(params.name)+'Resolver' : false
                         }, () => {
-                            if (params.resolves) {
+                            if (params.resolves || global.enjin.lazyLoad) {
                                 addResolver({
+                                    type: 'page',
                                     name: params.name, 
                                     resolves: params.resolves
                                 }, callback);

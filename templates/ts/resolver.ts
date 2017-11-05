@@ -6,7 +6,7 @@ class <%= name %>Resolver {
         };
     }<% _.each(resolves, function(resolve) { %>
     
-    <%= resolve %>() {
-        return {};
+    <%= resolve %>(<%= lazyLoad && resolve === 'lazyLoader' ? '$ocLazyLoad' : '' %>) {
+        <% if (lazyLoad && resolve === 'lazyLoader') { %>return $ocLazyLoad.load('<%= lazyLoad %>');<% } else { %>return {};<% } %>
     }<% }); %>
 }
