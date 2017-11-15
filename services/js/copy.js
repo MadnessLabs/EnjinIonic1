@@ -1,9 +1,13 @@
 const gulp = require('gulp');
 
-const jsCopy = function(callback) {
-    gulp.src(global.enjin.js.copy, {base: global.enjin.buildDir})
+const jsCopy = function (callback) {
+    if (!global.enjin.js.copy) {
+        callback();
+        return false;
+    }
+    gulp.src(global.enjin.js.copy, { base: global.enjin.buildDir })
         .pipe(gulp.dest(global.enjin.root))
-        .on('end', function() {
+        .on('end', function () {
             callback();
         });
 };

@@ -2,11 +2,11 @@ const sequence = require('../sequence');
 const htmlCompile = require('../html/compile');
 const htmlInject = require('../html/inject');
 
-module.exports = function(name, tasks, callback) {
+module.exports = function (name, tasks, callback) {
     if (!global.runningTasks) {
         global.runningTasks = {};
     }
-    
+
     var runningAgain = false;
 
     if (global.runningTasks[name]) {
@@ -16,14 +16,14 @@ module.exports = function(name, tasks, callback) {
         global.runningTasks[name] = tasks.length;
     }
 
-    console.log(JSON.stringify(global.runningTasks));
+    //console.log(JSON.stringify(global.runningTasks));
 
     sequence(tasks, () => {
         if (!runningAgain) {
             delete global.runningTasks[name];
             console.log(`Done doing ${name}`);
         }
-        
+
         if (Object.keys(global.runningTasks).length === 0 && global.synced) {
             if (global.injectHtml) {
                 console.log('Ima doing it!');

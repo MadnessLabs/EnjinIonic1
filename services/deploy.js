@@ -10,21 +10,23 @@ const htmlInline = require('./html/inline');
 
 module.exports = gulp.series(
     ...buildTasks(),
-    function(done) {
-        var cssBuildPath = global.enjin.root + global.enjin.css.dir + global.enjin.css.file;
-        var jsBuildPath = global.enjin.root + global.enjin.js.dir + global.enjin.js.file;
-        del([cssBuildPath, jsBuildPath]).then(() => {
-            if (done && typeof done === 'function') {
-                done();
-            }
-        }).catch((err) => {
-            console.log('[ERROR] This happened: ' + err);
-            if (done && typeof done === 'function') {
-                done();
-            }
-        });
+    function (done) {
+        setTimeout(() => {
+            var cssBuildPath = global.enjin.root + global.enjin.css.dir + global.enjin.css.file;
+            var jsBuildPath = global.enjin.root + global.enjin.js.dir + global.enjin.js.file;
+            del([cssBuildPath, jsBuildPath]).then(() => {
+                if (done && typeof done === 'function') {
+                    done();
+                }
+            }).catch((err) => {
+                console.log('[ERROR] This happened: ' + err);
+                if (done && typeof done === 'function') {
+                    done();
+                }
+            });
+        }, 1000);
     },
-    htmlInline,
+    //htmlInline,
     workbox,
     deploySsh
 );
