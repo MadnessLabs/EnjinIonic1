@@ -11,6 +11,7 @@ const stencilBuild = require('./stencil');
 const images = require('./images');
 const buildRun = require('./build/run');
 const fonts = require('./fonts');
+const workbox = require('./workbox');
 
 
 module.exports = function (callback) {
@@ -22,7 +23,6 @@ module.exports = function (callback) {
     var tasks = [];
 
     buildRun('js', jsTasks(), () => {
-        console.log('build js task');
         buildRun('css', cssTasks(), () => {
             buildRun('html', htmlTasks(), () => {
                 if (global.enjin.stenciljs && (!global.lastEnjin || !_.isEqual(global.lastEnjin.stenciljs, global.enjin.stenciljs))) {
@@ -36,9 +36,11 @@ module.exports = function (callback) {
                 if (global.enjin.font && (!global.lastEnjin || !_.isEqual(global.lastEnjin.font, global.enjin.font))) {
                     tasks.push(fonts);
                 }
-
                 if (global.enjin.local) {
                     tasks.push(htmlInject);
+                }
+                if (!global.enjin.local) {
+                    tasks.push(workbox);
                 }
                 buildRun('config', tasks, callback);
             });
