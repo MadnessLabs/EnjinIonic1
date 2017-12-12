@@ -58,9 +58,7 @@
     "ssh-deploy-release": "^2.1.2",
     "typescript": "^2.5.3",
     "workbox-build": "^2.1.0",
-    "yargs": "^9.0.1"
-  },
-  "devDependencies": {
+    "yargs": "^9.0.1",
     "gulp-delete-lines": "0.0.7",
     "gulp-strip-css-comments": "^1.2.0"
   }
