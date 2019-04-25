@@ -12,7 +12,8 @@ const jsCompile = function(callback) {
             module: "system",
             removeComments: true,
             preserveConstEnums: true,
-            sourceMap: true
+            sourceMap: true,
+            lib: ["es5", "es2015", "dom"]
         });
     }
     var tsFiles = global.enjin.js.watch.slice(0, -2);
