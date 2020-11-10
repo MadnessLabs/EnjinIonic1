@@ -39,7 +39,6 @@ Below is a list of resources to help understand the software stack better.  Keep
 * <a href="http://sass-lang.com/" target="_blank">SASS</a> - For writting cleaner and variable capable CSS.
 * <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> - For using ES6 with static typing.
 * <a href="https://pugjs.org/" target="_blank">Pug</a> - For writing cleaner and variable capable HTML.
-* <a href="https://github.com/mahnunchik/gulp-responsive" target="_blank">Gulp Responsive</a> - For resizing images
 
 ### <a name="instructions"></a> SETUP ENVIRONMENT INSTRUCTIONS
 
@@ -291,7 +290,7 @@ Creates favicons and icon file for the application from resources/icon.png file.
 
 ### **gulp images**
 
-Resizes images from enjin {```img.srcDir```} to {```img.dir```} using the configs from {```img.config```}. See <a href="https://github.com/mahnunchik/gulp-responsive" target="_blank">Gulp-Responsive Documentation</a> for examples
+Copy images from enjin {```img.srcDir```} to {```img.dir```}
 
 ---
 
