@@ -2,11 +2,6 @@ const gulp = require('gulp');
 const cache = require('gulp-cached');
 
 const imagesTask = function(callback) {
-    var config = global.enjin.img.config || typeof global.enjin.img.config === 'object' ? global.enjin.img.config : responsiveConfig([
-        `${global.enjin.root}**/*.css`,
-        `${global.enjin.root}**/*.html`
-    ]);
-
     gulp.src(`${global.enjin.img.srcDir}*.{png,jpg}`)
         .pipe(cache('images'))
         .pipe(gulp.dest(global.enjin.root + global.enjin.img.dir))
